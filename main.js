@@ -5,7 +5,6 @@ btn.addEventListener("click", search)
 btn.addEventListener("click", clearDisplayArea);
 
 async function search(e) {
-    document.getElementById("initial-display").style.display = "none";
     let searchBox = document.getElementById("search-box");
     let fullURL = baseURL + (searchBox.value ? `q=${encodeURIComponent(searchBox.value)}` : `year_start=${new Date().getFullYear()}`);
    //********** */ let fullURL = baseURL + `album=${encodeURIComponent("apollo")}`;
