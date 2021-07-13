@@ -50,6 +50,7 @@ button:hover {
   justify-content: center;
   background: royalblue;
   width: 100%;
+  overflow: hidden;
 }
 html, body {
   height: 100%;
@@ -102,6 +103,8 @@ body {
   object-fit: scale-down;
   color: white;
 }
+.apod video {
+}
 .title-container {
   height: 70px;
   width: 100%;
@@ -132,4 +135,23 @@ body {
     color: white;
     text-align: center;
     margin-left: 15%;
+}
+.big-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background-color: gray;
+  opacity: 0.8;
+  z-index: 2;
 }

@@ -56,5 +56,29 @@ function createCard(item) {
     card.appendChild(imageContainer);
     card.appendChild(titleContainer);
 
+    card.addEventListener("click", createBigCard);
+
     return card;
+}
+
+function createBigCard(event) {
+    document.getElementById("overlay").style.display = "initial";
+    let displayArea = document.getElementById("display-area");
+    let wrapper = document.createElement("div");
+    wrapper.classList.add("big-card");
+    
+    let image = document.createElement("img");
+    image.src = this.firstChild.firstChild.src;
+
+    wrapper.appendChild(image);
+
+    displayArea.appendChild(wrapper);
+
+    wrapper.addEventListener("click", hide);
+}
+
+function hide(event) {
+    let displayArea = document.getElementById("display-area");
+    document.getElementById("overlay").style.display = "none";
+    displayArea.removeChild(this);
 }
