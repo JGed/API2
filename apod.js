@@ -11,8 +11,8 @@ fetch("https://api.nasa.gov/planetary/apod?api_key=JRRdWsGr38G2srRNPTYeeyPqeKwJ3
     else {
         element = document.createElement("iframe");
         element.src = json.url;
-        element.style.height = "100%";
-        element.style.width = "100%";
+        element.style.height = "85%";
+        element.style.width = "85%";
         element.style.frameborder = "0";
     }
     container.appendChild(element);
