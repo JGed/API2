@@ -6,13 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="stylesheet.css">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
 </head>
 <body>
-    <nav>
-       <a href="index.html"><img src="assets/nasa-logo.png" alt="NASA"></a>
-       <h1 class="apod-header">Picture of the Day</h1>
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html"><img src="./assets/nasa-logo.png" alt="NASA Logo" height=60px /></a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="photo-lookup.html">NASA Image Library</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="apod.html">Astronomy Picture of the Day</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
-    <div id="apod-container" class="apod">
+    <div id="my-apod-container" class="my-apod">
 
     </div>
     <script src="./apod.js"></script>

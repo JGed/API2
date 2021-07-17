@@ -1,29 +1,25 @@
-let children = document.getElementById("initial-display").children
-for(let i = 0; i < children.length; i++) {
-    children[i].addEventListener("click", createBigCard);
-}
+let lightbox = document.createElement("div");
+lightbox.id = "my-lightbox";
+let img = document.createElement("img");
+
+lightbox.appendChild(img);
+
+document.body.appendChild(lightbox);
+
+let planets = document.querySelectorAll(".planet");
+planets.forEach(planet => {
+    planet.firstElementChild.firstElementChild.addEventListener("click", showLightbox);
+    });
 
 
-function createBigCard(event) {
-    console.log(this.children);
-    console.log(this.firstChild);
-    console.log(this.firstChild.firstChild);
-    document.getElementById("overlay").style.display = "initial";
-    let displayArea = document.getElementById("initial-display");
-    let wrapper = document.createElement("div");
-    wrapper.classList.add("big-card");
-    
-    let image = document.createElement("img");
-    image.src = this.firstElementChild.firstElementChild.src;
-    wrapper.appendChild(image);
-
-    displayArea.appendChild(wrapper);
-
-    wrapper.addEventListener("click", hide);
+function showLightbox(event) {
+    lightbox.classList.add("is-active");
+    img.src = this.src;
 }
 
 function hide(event) {
-    let displayArea = document.getElementById("initial-display");
-    document.getElementById("overlay").style.display = "none";
-    displayArea.removeChild(this);
+    if(event.target === this){
+        lightbox.classList.remove("is-active");
+    }
 }
+lightbox.addEventListener("click", hide);

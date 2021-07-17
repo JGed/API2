@@ -1,70 +1,22 @@
-nav {
-  height: 200px;
-  width: 100%;
-  display: flex;
-  background-color: black;
+.nav-link {
+    color: hsl(0, 0%, 100%);
+    transition: ease-in 0.25s;
 }
-nav a, img {
-    height: 95%;
-    object-fit: scale-down;
+.nav-link:hover {
+    background-color: hsl(210, 11%, 35%);
+    color: hsl(0, 0%, 100%);
 }
-nav > h1 {
-  font-size: 70px;
-  color: white;
-  text-align: center;
-  margin-left: 17%;
-}
-.search-container {
-    width: 80%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-.search-container h1 {
-    font-size: 70px;
-    color: white;
-    text-align: center;
-    margin-right: 10%;
-}
-.search-container
-input,
-button {
-  width: 15%;
-  height: 80px;
-  margin: 15px;
-  font-size: 40px;
-  box-sizing: content-box;
-  text-align: center;
-}
-.search-container
-input {
-  width: 20%;
-}
-.search-container button {
-  border: 3px solid black;
-}
-button:hover {
-    color: blue;
-    background-color: hsl(0, 0%, 85%);
-}
-#display-area, #initial-display {
+#my-container {
   display: flex;
   flex-wrap: wrap;
   align-items: space-between;
   justify-content: center;
-  background: royalblue;
+  background-image: url("assets/milky-way.jpg");
+  background-size: cover;
   width: 100%;
   overflow: hidden;
 }
-html, body {
-  height: 100%;
-  padding: 0px;
-  margin: 0px;
-}
-body {
-    background: royalblue;
-}
-.image-container {
+.my-image-container {
   height: 400px;
   width: 100%;
   display: flex;
@@ -74,13 +26,7 @@ body {
   background-color: black;
   overflow: hidden;
 }
-.planet:hover {
-    cursor: pointer;
-}
-.planet .image-container {
-  background-color: black;
-}
-.card {
+.my-card {
   height: 470px;
   width: 400px;
   margin: 2vh 5vw 2vh 5vw;
@@ -88,29 +34,29 @@ body {
   box-sizing: border-box;
   border: solid 20px white;
 }
-.card:hover {
-  cursor: zoom-in;
-}
-.image-container img {
+.my-image-container img {
   max-width: 100%;
-  max-height: 100%;
+  width: 100%;
   object-fit: scale-down;
   color: white;
 }
-.apod {
-  height: 100%;
-  width: 100%;
+.my-card .my-image-container img:hover {
+  cursor: url("assets/magnifying-glass.png"), auto;
+}
+.my-apod {
+  height: 100vh;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: black;
 }
-.apod img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: scale-down;
-  color: white;
+.my-apod img {
+  max-width: 90%;
+  max-height: 80%;
+  border: 3px solid white;
 }
-.title-container {
+.my-title-container {
   height: 70px;
   width: 100%;
   display: flex;
@@ -118,47 +64,37 @@ body {
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  padding-bottom: 20px;
   box-sizing: border-box;
 }
-.title-container p {
+.my-title-container p {
   font-family: Gabriola;
+  font-size: x-large;
 }
-.page-link {
-  color: hsl(0, 0%, 100%);
-  font-size: 30px;
-  line-height: 180px;
-  margin-left: 100px;
-  margin-right: 60px;
+.my-apod-header {
+  font-size: 70px;
+  color: white;
+  text-align: center;
+  margin-left: 18%;
 }
-.page-link:hover {
-  color:royalblue;
-}
-.apod-header {
-    font-size: 70px;
-    color: white;
-    text-align: center;
-    margin-left: 18%;
-}
-.big-card {
+#my-lightbox {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3;
-}
-.big-card:hover {
-  cursor: zoom-out;
-}
-
-#overlay {
-  display: none;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  height: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0);
+  top: 0;
   width: 100%;
-  background-color: gray;
-  opacity: 0.8;
-  z-index: 2;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 80%);
+  transition: all 0.25s;
+}
+#my-lightbox.is-active {
+  transform: scale(1);
+}
+#my-lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  background-color: black;
+  border: 3px solid white;
 }

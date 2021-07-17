@@ -10,7 +10,7 @@ async function search(e) {
     let fullURL = baseURL + (searchBox.value ? `q=${encodeURIComponent(searchBox.value)}` : `year_start=${new Date().getFullYear()}`);
    //********** */ let fullURL = baseURL + `album=${encodeURIComponent("apollo")}`;
     console.log(fullURL);
-    let displayArea = document.getElementById("display-area");
+    let displayArea = document.getElementById("my-container");
     let obj = await fetch(fullURL)
                     .then(response => response.json()); 
     console.log(obj);
@@ -28,22 +28,22 @@ async function search(e) {
     } 
 }
 function clearDisplayArea(e) {
-    let displayArea = document.getElementById("display-area");
+    let displayArea = document.getElementById("my-container");
     while(displayArea.firstChild) {
         displayArea.removeChild(displayArea.firstChild);
     }
 }
 function createCard(item) {
     let card = document.createElement("div");
-    card.classList.add("card");
+    card.classList.add("my-card");
 
     let imageContainer = document.createElement("div");
-    imageContainer.classList.add("image-container");
+    imageContainer.classList.add("my-image-container");
 
     let image = document.createElement("img");
 
     let titleContainer = document.createElement("div");
-    titleContainer.classList.add("title-container");
+    titleContainer.classList.add("my-title-container");
 
     let title = document.createElement("p");
 
@@ -57,29 +57,26 @@ function createCard(item) {
     card.appendChild(imageContainer);
     card.appendChild(titleContainer);
 
-    card.addEventListener("click", createBigCard);
+    image.addEventListener("click", showLightbox);
 
     return card;
 }
 
-function createBigCard(event) {
-    document.getElementById("overlay").style.display = "initial";
-    let displayArea = document.getElementById("display-area");
-    let wrapper = document.createElement("div");
-    wrapper.classList.add("big-card");
-    
-    let image = document.createElement("img");
-    image.src = this.firstChild.firstChild.src;
+let lightbox = document.createElement("div");
+lightbox.id = "my-lightbox";
+let img = document.createElement("img");
 
-    wrapper.appendChild(image);
+lightbox.appendChild(img);
 
-    displayArea.appendChild(wrapper);
-
-    wrapper.addEventListener("click", hide);
+document.body.appendChild(lightbox);
+function showLightbox(event) {
+    lightbox.classList.add("is-active");
+    img.src = this.src;
 }
 
 function hide(event) {
-    let displayArea = document.getElementById("display-area");
-    document.getElementById("overlay").style.display = "none";
-    displayArea.removeChild(this);
+    if(event.target === this){
+        lightbox.classList.remove("is-active");
+    }
 }
+lightbox.addEventListener("click", hide);
